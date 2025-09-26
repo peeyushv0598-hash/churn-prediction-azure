@@ -28,7 +28,7 @@ jobs:
       run: az extension add -n ml -y
 
     # Step 4: Submit the training job using your job.yml file
-    - name's "Start Azure ML Training Job"
+    - name: "Start Azure ML Training Job"
       run: >
         az ml job create --file aml/job.yml 
         --resource-group churn-rg 
