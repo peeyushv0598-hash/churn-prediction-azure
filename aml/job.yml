@@ -1,0 +1,26 @@
+# aml/job.yml
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+command: >-
+  python train.py 
+  --data_path ${{inputs.data_path}} 
+  --model_name ${{inputs.model_name}}
+
+# All of your code from the 'src' directory will be uploaded to Azure
+code: ../src
+
+# These are the inputs the command above will use
+inputs:
+  data_path: 
+    type: uri_file
+    # This points to the Azure ML dataset you created earlier. 
+    # Replace 'churn-training-data:1' with YOUR_DATASET_NAME:VERSION
+    path: azureml:churn-training-data:1 
+  model_name: churn-prediction-model
+
+# This defines the execution environment
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest
+compute: azureml:cpu-cluster # The name of the compute cluster you created
+
+# Human-readable metadata for the job
+display_name: Train Churn Prediction Model
+experiment_name: churn-prediction-experiment
