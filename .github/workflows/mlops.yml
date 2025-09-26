@@ -1,0 +1,50 @@
+# .github/workflows/mlops.yml
+
+name: Churn Prediction CI/CD
+
+# This workflow triggers on any push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  train-and-deploy:
+    runs-on: ubuntu-latest # The job will run on a Linux virtual machine
+
+    steps:
+    # Step 1: Check out your code from the repository
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    # Step 2: Log in to Azure using the secret you created
+    - name: Log in to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # Step 3: Install the Azure ML CLI extension
+    - name: Install Azure ML extension
+      run: az extension add -n ml -y
+
+    # Step 4: Submit the training job using your job.yml file
+    - name's "Start Azure ML Training Job"
+      run: >
+        az ml job create --file aml/job.yml 
+        --resource-group churn-rg 
+        --workspace-name churn-rg
+
+    # Step 5: Create the online endpoint (if it doesn't already exist)
+    - name: Create Azure ML Online Endpoint
+      run: >
+        az ml online-endpoint create --file aml/endpoint.yml 
+        --resource-group churn-rg 
+        --workspace-name churn-rg
+
+    # Step 6: Deploy the registered model to the endpoint
+    - name: Deploy Model to Endpoint
+      run: >
+        az ml online-deployment create --file aml/deployment.yml 
+        --all-traffic 
+        --resource-group churn-rg 
+        --workspace-name churn-rg
