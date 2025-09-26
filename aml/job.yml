@@ -19,7 +19,7 @@ inputs:
 
 # This defines the execution environment
 environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest
-compute: azureml:cpu-cluster # The name of the compute cluster you created
+compute: azureml:churn-comp # The name of the compute cluster you created
 
 # Human-readable metadata for the job
 display_name: Train Churn Prediction Model
