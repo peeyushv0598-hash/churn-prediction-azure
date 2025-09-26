@@ -35,7 +35,7 @@ jobs:
         --workspace-name churn-rg
 
     # Step 5: Create the online endpoint (if it doesn't already exist)
-    - name: Create Azure ML Online Endpoint
+    - name: Create or Update Azure ML Online Endpoint
       run: >
         az ml online-endpoint create --file aml/endpoint.yml 
         --resource-group churn-rg 
