@@ -27,7 +27,7 @@ def parse_args():
 
 # --- Re-used functions from your original script ---
 def load_data(path):
-    df = pd.read_csv(path)
+    df = pd.read_csv("C:\\Users\\peeyu\\churn-prediction-project\\Customer churn train-test dataset\\customer_churn_dataset-training-master.csv")
     return df
 
 def prepare_xy(df, target_col):
