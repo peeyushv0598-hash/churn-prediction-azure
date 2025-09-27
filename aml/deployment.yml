@@ -14,5 +14,5 @@ code_configuration:
 environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest
 
 # The virtual machine size for the endpoint
-instance_type: Standard_DS2_v2
+instance_type: Standard_DS3_v2
 instance_count: 1
