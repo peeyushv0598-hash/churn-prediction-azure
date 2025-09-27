@@ -1,3 +1,3 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
-name: churn-prediction-endpoint 
+name: churn-prediction-endpoint-Akaza$@231
 auth_mode: key
