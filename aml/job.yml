@@ -14,7 +14,7 @@ inputs:
     type: uri_file
     # This points to the Azure ML dataset you created earlier. 
     # Replace 'churn-training-data:1' with YOUR_DATASET_NAME:VERSION
-    path: azureml:churn-training-data:1 
+    path: azureml:churn-training-data:1
   model_name: churn-prediction-model
 
 # This defines the execution environment
