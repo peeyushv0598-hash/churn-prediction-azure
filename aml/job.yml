@@ -11,7 +11,7 @@ code: ../src
 # These are the inputs the command above will use
 inputs:
   data_path: 
-    type: uri_file
+    type: mltable
     # This points to the Azure ML dataset you created earlier. 
     # Replace 'churn-training-data:1' with YOUR_DATASET_NAME:VERSION
     path: azureml:churn-training-data:1
